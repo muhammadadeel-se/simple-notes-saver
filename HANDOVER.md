@@ -2,12 +2,12 @@
 
 ## 1. Project Overview & Live URL
 - **Application Name:** Simple Notes Saver
-- **Live Deployment URL:** [Railway Live URL Placehere]
+- **Live Deployment URL:** https://simple-notes-saver-production.up.railway.app
 - **Repository:** https://github.com/muhammadadeel-se/simple-notes-saver.git
 
 ## 2. Architecture & Summary Logic
 - **Framework:** Python Flask served via Gunicorn WSGI in production.
-- **Input Sanitization:** Regex cleaning strips null bytes and escape HTML controls to prevent file corruption.
+- **Input Sanitization:** Regex cleaning strips null bytes and escapes HTML controls to prevent file corruption.
 - **Validation:** Enforces 400 Bad Request error status for empty notes or inputs exceeding 5,000 characters.
 - **20-Word Summary Extraction:** Extracts strictly the first 20 words (`words[:20]`) and prepends `Summary: <text>` at the top of each entry in `notes.txt`.
 
