@@ -14,17 +14,10 @@ def generate_summary(text):
     if not cleaned:
         return ""
     
-    # Match the first sentence ending with ., !, or ?
-    match = re.search(r'([^.!?]*[.!?])', cleaned)
-    if match:
-        first_sentence = match.group(1).strip()
-        if len(first_sentence) <= 120:
-            return first_sentence
-
-    # Fallback: Truncate to 120 chars if no short sentence exists
-    if len(cleaned) > 120:
-        return cleaned[:120].strip() + "..."
-    return cleaned
+    # Extract the first 20 words
+    words = cleaned.split()
+    summary_words = words[:20]
+    return " ".join(summary_words)
 
 @app.route('/')
 def index():
@@ -43,7 +36,7 @@ def save():
     sanitized_note = sanitize_input(raw_note)
     summary = generate_summary(raw_note)
 
-    # Append formatted entry to notes.txt
+    # Prepend Summary line at the top, followed by the original note
     with open('notes.txt', 'a', encoding='utf-8') as f:
         f.write(f"Summary: {summary}\nNote: {sanitized_note}\n---\n")
 
