@@ -12,3 +12,13 @@ Notes are formatted in `notes.txt` as:
 Summary: <summary>
 Note: <sanitized_note>
 ---
+# Simple Notes Saver
+
+A Flask web application that securely ingests technician notes, generates a summary, and appends them to a local `notes.txt` file.
+
+## How to run locally
+1. Clone this repository.
+2. Create and activate a virtual environment:
+   ```powershell
+   python -m venv venv
+   venv\Scripts\activate
