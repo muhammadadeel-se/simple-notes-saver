@@ -2,13 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simple Notes Saver</title>
 </head>
 <body>
     <form action="/save" method="POST">
-        <!-- Mentor asked specifically for name="note" -->
-        <textarea name="note" rows="5" cols="40" required maxlength="5000"></textarea>
-        <br><br>
+        <textarea name="note" rows="10" cols="50" placeholder="Enter your technician note here..."></textarea><br><br>
         <button type="submit">Save</button>
     </form>
 </body>
