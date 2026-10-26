@@ -13,11 +13,8 @@ def generate_summary(text):
     cleaned = text.strip()
     if not cleaned:
         return ""
-    
-    # Extract the first 20 words
     words = cleaned.split()
-    summary_words = words[:20]
-    return " ".join(summary_words)
+    return " ".join(words[:20])
 
 @app.route('/')
 def index():
@@ -27,7 +24,7 @@ def index():
 def save():
     raw_note = request.form.get('note', '')
     
-    # Validation checks
+    # Validation checks (400 error for empty or >5000 chars)
     if not raw_note or not raw_note.strip():
         abort(400, "Note cannot be empty.")
     if len(raw_note) > 5000:
@@ -36,7 +33,7 @@ def save():
     sanitized_note = sanitize_input(raw_note)
     summary = generate_summary(raw_note)
 
-    # Prepend Summary line at the top, followed by the original note
+    # Prepend Summary line before the note content
     with open('notes.txt', 'a', encoding='utf-8') as f:
         f.write(f"Summary: {summary}\nNote: {sanitized_note}\n---\n")
 
